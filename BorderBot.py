@@ -3,15 +3,18 @@ from hlt import NORTH, EAST, SOUTH, WEST, STILL, Move, Square
 import random
 import logging
 
+TURN = 1
+PROD_WAIT = random.randint(3, 7) # still tuning how long to delay move
+NAME = "BorderPythonBot_w" + str(PROD_WAIT)
+
 myID, game_map = hlt.get_init()
-hlt.send_init("BorderPythonBot_w5")
+hlt.send_init(NAME)
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='BorderPythonBot_w5.log',level=logging.WARNING,
+logging.basicConfig(filename=(NAME + '.log'),level=logging.WARNING,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-TURN = 1
-PROD_WAIT = 5
+
 
 def set_move(square):
     border = False
